@@ -4,6 +4,7 @@ from config import settings
 
 Base = declarative_base()
 
+
 class Message(Base):
     __tablename__ = "messages"
 
@@ -11,9 +12,13 @@ class Message(Base):
     role = Column(String, index=True)  # user or chatbot
     content = Column(Text)
 
+
 def get_engine(db_name: str):
     db_path = f"{settings.DATABASE_DIR}/{db_name}.db"
-    return create_engine(f"sqlite:///{db_path}", connect_args={"check_same_thread": False})
+    return create_engine(
+        f"sqlite:///{db_path}", connect_args={"check_same_thread": False}
+    )
+
 
 def get_session(db_name: str):
     engine = get_engine(db_name)

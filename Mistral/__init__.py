@@ -11,9 +11,11 @@ templates = Jinja2Templates(directory="Mistral/templates")
 # Include the router that handles documents and queries
 app.include_router(router)
 
+
 @app.get("/")
 async def home(request: Request):
-    return templates.TemplateResponse({"request": request}, "index.html",)
+    return templates.TemplateResponse("index.html", {"request": request})
+
 
 @app.get("/health")
 def health_check():

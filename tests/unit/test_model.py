@@ -7,12 +7,13 @@ from Mistral.models import Base, Message
 engine = create_engine("sqlite:///:memory:")
 SessionLocal = sessionmaker(bind=engine)
 
+
 def setup_module(module):
     # Create tables in the test database
     Base.metadata.create_all(bind=engine)
 
+
 def test_create_message():
-    # Create a new session
     session = SessionLocal()
     try:
         # Add a new message
