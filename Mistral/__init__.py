@@ -8,7 +8,7 @@ app = FastAPI(title="Mistral Q&A Service", version="0.1.0")
 # Setup templates
 templates = Jinja2Templates(directory="Mistral/templates")
 
-# Include the router that handles documents and queries
+# Include the router that handles queries and other
 app.include_router(router)
 
 
