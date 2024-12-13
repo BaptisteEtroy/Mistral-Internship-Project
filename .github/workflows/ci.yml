@@ -35,4 +35,4 @@ jobs:
       env:
         MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
       run: |
-        PYTHONPATH=. pytest tests/ -v --cov=Mistral
+        PYTHONPATH=. pytest tests/
