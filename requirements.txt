@@ -9,7 +9,6 @@ httpx
 pytest
 jinja2
 pytest-asyncio        
-alembic            
-black             
+alembic                       
 flake8            
 mypy             

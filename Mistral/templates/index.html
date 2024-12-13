@@ -45,6 +45,16 @@
         <h1 class="text-base font-semibold text-gray-700">Mistral le chat - with a memory</h1>
     </header>
 
+    <!-- User Selection -->
+    <div class="flex justify-center mt-4 space-x-2">
+        <select id="db-selector" class="border p-2" onchange="loadConversation()">
+            <option value="default">Default</option>
+        </select>
+        <button onclick="createNewConversation()" class="bg-blue-600 text-white text-sm px-4 py-2 rounded-md hover:bg-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            New Conversation
+        </button>
+    </div>
+
     <!-- Chat Container -->
     <main id="chat-container" class="flex-1 overflow-y-auto p-6 space-y-4">
         <!-- If no messages, a placeholder will appear dynamically -->
@@ -68,12 +78,7 @@
         let conversation = [];
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Load messages from sessionStorage if available
-            const savedConversation = sessionStorage.getItem('conversation');
-            if (savedConversation) {
-                conversation = JSON.parse(savedConversation);
-                conversation.forEach(msg => addMessageToChat(msg.role, msg.content, false));
-            }
+            loadConversation();
 
             const questionInput = document.getElementById('question');
             questionInput.addEventListener('keydown', (e) => {
@@ -83,11 +88,28 @@
                     askQuestion();
                 }
             });
-
-            if (conversation.length === 0) {
-                showPlaceholderMessage();
-            }
         });
+
+        function loadConversation() {
+            const dbName = document.getElementById('db-selector').value;
+            conversation = [];
+            sessionStorage.setItem('conversation', JSON.stringify(conversation));
+            document.getElementById('chat-container').innerHTML = '';
+            showPlaceholderMessage();
+        }
+
+        function createNewConversation() {
+            const newName = prompt("Enter a name for the new conversation:");
+            if (newName) {
+                const dbSelector = document.getElementById('db-selector');
+                const newOption = document.createElement('option');
+                newOption.value = newName;
+                newOption.text = newName;
+                dbSelector.add(newOption);
+                dbSelector.value = newName;
+                loadConversation();
+            }
+        }
 
         function saveConversation() {
             sessionStorage.setItem('conversation', JSON.stringify(conversation));
@@ -106,6 +128,8 @@
             const question = questionInput.value.trim();
             if (!question) return;
 
+            const dbName = document.getElementById('db-selector').value;
+
             clearPlaceholderIfAny();
             addMessageToChat('user', question);
             questionInput.value = '';
@@ -114,7 +138,7 @@
                 const response = await fetch('/query', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({question})
+                    body: JSON.stringify({question, db_name: dbName})
                 });
                 const result = await response.json();
 
