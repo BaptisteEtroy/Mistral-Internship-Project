@@ -24,39 +24,41 @@ For example:
 
 ## Project Structure
 
-Mistral-Internship-Project/
-│
-├── .github/
-│   └── workflows/
-│       └── ci.yml          # Continuous integration
-│
-├── data/                   # SQLite databases for each user
-│
-├── Mistral/
-│   ├── __init__.py         # Initializes the Mistral package and sets up the FastAPI app.
-│   ├── models.py           # SQLAlchemy models for database tables
-│   ├── pydantic_models.py  # Pydantic models for request and response validation
-│   ├── routes.py           # API routes logic for handling requests
-│   └── templates/
-│       └── index.html      # UI HTML/Javascript
-│
-├── tests/
-│   ├── functional/
-│   │   └── test_routes.py  # Functional tests for API routes
-│   ├── unit/
-│   │   └── test_model.py   # Unit tests for individual components
-│   ├── API_testing.py      # Initial script for testing the Mistral API
-│   └── conftest.py         # Configuration for pytest
-│
-├── config.py               # Configuration file for env variables and settings
-├── app.py                  # FastAPI application
-├── Dockerfile              # Docker file of the application
-├── docker-compose.yml      # Configuration for Docker Compose to run the app
-|
-├── .gitignore
-├── .dockerignore
-├── requirements.txt
-└── README.md
+   ```bash
+    Mistral-Internship-Project/
+    │
+    ├── .github/
+    │   └── workflows/
+    │       └── ci.yml          # Continuous integration
+    │
+    ├── data/                   # SQLite databases for each user
+    │
+    ├── Mistral/
+    │   ├── __init__.py         # Initializes the Mistral package and sets up the FastAPI app.
+    │   ├── models.py           # SQLAlchemy models for database tables
+    │   ├── pydantic_models.py  # Pydantic models for request and response validation
+    │   ├── routes.py           # API routes logic for handling requests
+    │   └── templates/
+    │       └── index.html      # UI HTML/Javascript
+    │
+    ├── tests/
+    │   ├── functional/
+    │   │   └── test_routes.py  # Functional tests for API routes
+    │   ├── unit/
+    │   │   └── test_model.py   # Unit tests for individual components
+    │   ├── API_testing.py      # Initial script for testing the Mistral API
+    │   └── conftest.py         # Configuration for pytest
+    │
+    ├── config.py               # Configuration file for env variables and settings
+    ├── app.py                  # FastAPI application
+    ├── Dockerfile              # Docker file of the application
+    ├── docker-compose.yml      # Configuration for Docker Compose to run the app
+    |
+    ├── .gitignore
+    ├── .dockerignore
+    ├── requirements.txt
+    └── README.md
+```
 
 ## Installation
 
