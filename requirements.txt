@@ -8,6 +8,6 @@ sqlalchemy
 httpx
 pytest
 jinja2
-pytest-asyncio        
+pytest-asyncio
 alembic
 flake8
