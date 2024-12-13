@@ -19,7 +19,10 @@ def test_health_check(client):
     [("What is the capital of France?", 200), ("", 422)],
 )
 def test_query_route(client, question, expected_status):
-    response = client.post("/query", json={"question": question, "db_name": "default"})
+    response = client.post(
+        "/query",
+        json={"question": question, "db_name": "default"}
+    )
     assert response.status_code == expected_status
     if expected_status == 200:
         assert "answer" in response.json()
