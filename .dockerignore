@@ -4,15 +4,14 @@ __pycache__/
 venv/
 .env
 
-# Database
+# Databases
 *.db
 
 # Git
 .git/
-.gitignore
 
 # Tests
 .pytest_cache/
 
 # IDE
-.vscode/ 
+.vscode/

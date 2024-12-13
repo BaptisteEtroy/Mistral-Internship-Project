@@ -13,6 +13,7 @@ router = APIRouter()
 
 client = Mistral(api_key=settings.MISTRAL_API_KEY)
 
+
 @router.post("/query", response_model=QueryResponse)
 def query_documents(request: QueryRequest):
     try:
@@ -28,8 +29,11 @@ def query_documents(request: QueryRequest):
 
         chat_response = client.chat.complete(
             model=settings.MODEL_NAME,
-            messages=[{"role": msg.role, "content": msg.content} for msg in conversation_history],
-            max_tokens=settings.MAX_TOKENS
+            messages=[
+                {"role": msg.role, "content": msg.content}
+                for msg in conversation_history
+            ],
+            max_tokens=settings.MAX_TOKENS,
         )
 
         if not chat_response.choices:

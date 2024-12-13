@@ -1,9 +1,17 @@
-__pycache__
-.pytest_cache
-
+# Python
+__pycache__/
+*.pyc
+venv/
 .env
-venv
-.DS_Store
 
-app.db
-data/
+# Databases
+*.db
+
+# Git
+.git/
+
+# Tests
+.pytest_cache/
+
+# IDE
+.vscode/

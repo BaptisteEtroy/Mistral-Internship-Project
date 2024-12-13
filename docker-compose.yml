@@ -7,7 +7,6 @@ services:
       - "8000:8000"
     environment:
       - MISTRAL_API_KEY=${MISTRAL_API_KEY}
-      - DATABASE_URL=sqlite:///data/app.db
     volumes:
       - ./data:/app/data
     restart: unless-stopped
