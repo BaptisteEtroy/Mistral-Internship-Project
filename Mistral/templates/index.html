@@ -145,7 +145,7 @@
                 if (response.ok) {
                     addMessageToChat('assistant', result.answer);
                 } else {
-                    addMessageToChat('assistant', "Sorry, I couldn't understand that.");
+                    addMessageToChat('assistant', "Sorry, there seems to be a server error.");
                 }
             } catch (error) {
                 console.error(error);
