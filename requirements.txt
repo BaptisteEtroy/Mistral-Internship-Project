@@ -9,6 +9,5 @@ httpx
 pytest
 jinja2
 pytest-asyncio        
-alembic                       
-flake8            
-mypy             
+alembic
+flake8

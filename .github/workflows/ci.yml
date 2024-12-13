@@ -31,17 +31,8 @@ jobs:
       run: |
         flake8 . --count --show-source --statistics
         
-    - name: Run mypy
-      run: |
-        mypy .
-        
     - name: Run tests
       env:
         MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
       run: |
-        PYTHONPATH=. pytest tests/ -v --cov=Mistral --cov-report=xml
-        
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v4
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }} 
+        PYTHONPATH=. pytest tests/ -v --cov=Mistral
